@@ -1,5 +1,6 @@
 import pickle
-from const import *
+
+from src.const import *
 
 SPZS = []
 

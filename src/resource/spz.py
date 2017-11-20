@@ -1,7 +1,7 @@
-import random
-from flask_restful import reqparse, abort, Api, Resource
-from egv_model import *
-from storage import *
+from flask_restful import abort, Resource
+from src.storage import *
+
+from src.model.egv import *
 
 
 def decision(probability):

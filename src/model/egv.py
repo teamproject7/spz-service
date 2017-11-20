@@ -1,5 +1,6 @@
 import uuid
-from spz_model import *
+
+from src.model.spz import *
 
 FIRSTNAMES = ["Aaren", "Aarika", "Abagael", "Abagail", "Abbe", "Abbey", "Abbi"]
 LASTNAMES = ["Elladine", "Elle", "Ellen", "Ellene", "Ellette", "Elli", "Ellie", "Ellissa", "Elly", "Ellyn", "Ellynn",

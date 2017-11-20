@@ -1,4 +1,2 @@
-# http://127.0.0.1:5000/spz/BB-889QK
-fasdfa
-
-fasf
+### Build
+docker build -t spz-service .
