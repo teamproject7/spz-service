@@ -103,5 +103,7 @@ ENV/
 # IDE
 .idea/
 
-.data/
+data/
+openalpr/
+python3_venv/
 

@@ -25,9 +25,6 @@ EXPOSE 80
 #RUN service postgresql start && su - postgres -c "createdb test; psql -s test" && createdb test && psql -s test <<FOO create user test password 'test'; GRANT ALL PRIVILEGES ON DATABASE test TO test; FOO
 
 
-# Define environment variable
-ENV NAME World
-
 #TODO gunicorn file upload limit, log files etc.
 #web: gunicorn app:app --log-file=-
-CMD ["python3", "api.py"]
+CMD ["python3", "run.py"]

@@ -7,7 +7,6 @@ import magic
 from src.const import ALLOWED_MIME, DATA_DIRECTORY
 
 
-# TODO move
 def allowed_file(filename):
     mime = magic.Magic(mime=True)
     if mime.from_file(filename) in ALLOWED_MIME:
