@@ -11,7 +11,7 @@ ADD . /app
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git python3-pip python3-dev openalpr openalpr-daemon openalpr-utils libopenalpr-dev postgresql postgresql-contrib
 
 
-RUN cd /tmp && git clone https://github.com/openalpr/openalpr.git && cd openalpr/src/bindings/python && python3 setup.py install
+RUN cd /opt && git clone https://github.com/openalpr/openalpr.git && cd openalpr/src/bindings/python && python3 setup.py install
 
 
 # Install any needed packages specified in requirements.txt
@@ -28,6 +28,6 @@ EXPOSE 80
 # Define environment variable
 ENV NAME World
 
-# Run app.py when the container launches
+#TODO gunicorn file upload limit, log files etc.
 #web: gunicorn app:app --log-file=-
 CMD ["python3", "api.py"]
