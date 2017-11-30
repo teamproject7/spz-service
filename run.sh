@@ -2,4 +2,4 @@
 set -e
 
 export $(cat .env | xargs)
-python run.py
+python3 run.py

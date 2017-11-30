@@ -12,7 +12,10 @@ installs python depedencies, openalpr lib\
 ## Deployment
 
 ### Build 
-docker build -t spz-service .
+docker build -t michalcesek/spz-service:(tag e.g. '0.1') .\
+docker push michalcesek/spz-service
+
 
 ### Run docker container
-docker run --env-file .env -p 4000:80 spz-service:latest
+docker pull michalcesek/spz-service:0.1\
+docker run -d -p 80:80 michalcesek/spz-service:0.1
