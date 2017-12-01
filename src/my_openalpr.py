@@ -16,18 +16,22 @@ if not alpr.is_loaded():
 else:
     print('OpenALPR initialized ...')
 
-alpr.set_top_n(20)
+alpr.set_top_n(3)
 alpr.set_default_region("md")
 
 
 def recongnize(img_path):
-    print('recongniying')
     global alpr
     if alpr is None:
-        print('alpr is not initialized')
+        print('ALPR is not initialized')
 
-    return alpr.recognize_file(img_path)['results']
+    print('Recongnizing')
 
-# TODO move to proper place
-# Call when completely done to release memory
-# alpr.unload()
+    # "processing_time_ms": 77.234795,
+    # "data_type": "alpr_results",
+    # "img_height": 358,
+    # "img_width": 636,
+    # "results": [ {...}, ... ]
+    result = alpr.recognize_file(img_path)['results']
+    # TODO log processing time
+    return result
