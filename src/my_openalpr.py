@@ -32,6 +32,6 @@ def recongnize(img_path):
     # "img_height": 358,
     # "img_width": 636,
     # "results": [ {...}, ... ]
-    result = alpr.recognize_file(img_path)['results']
+    result = alpr.recognize_file(img_path)
     # TODO log processing time
     return result

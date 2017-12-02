@@ -4,7 +4,7 @@ import uuid
 
 import magic
 
-from src.const import ALLOWED_MIME, DATA_DIRECTORY
+from src.const import ALLOWED_MIME, UPLOAD_FOLDER
 
 
 def allowed_file(filename):
@@ -17,7 +17,7 @@ def allowed_file(filename):
 
 def save_b64_to_file(b64_str):
     fname = str(uuid.uuid4())
-    fpath = os.path.join(DATA_DIRECTORY, fname)
+    fpath = os.path.join(UPLOAD_FOLDER, fname)
 
     try:
         f = open(fpath, 'wb')
