@@ -1,0 +1,9 @@
+Flask
+gunicorn
+flask_restful
+rstr
+python-magic
+SQLAlchemy
+# DEV
+requests
+
