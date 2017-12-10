@@ -13,48 +13,50 @@ MODELS = ['Model I', 'Model II', 'Model III']
 YEARS = list(range(1900, 2017))
 
 
+def foo(plate):
+    return {
+        "id": str(uuid.uuid4()),
+        "plate": plate['plate'],
+        "coordinates": plate['coordinates'],
+        "vehicle": {
+            "id": str(uuid.uuid4()),
+            "parameters": {
+                "model": random.choice(MODELS),
+                "brand": random.choice(BRANDS),
+                "year": random.choice(YEARS),
+                "color": random.choice(COLORS)
+            },
+            "owner": {
+                "id": str(uuid.uuid4()),
+                "pid": "OB123489",
+                "fullname": "{} {}".format(random.choice(FIRSTNAMES), random.choice(LASTNAMES))
+            },
+            "insurance": {
+                "company": "Prva poistovna",
+                "date": time.time(),
+                "valid": random.choice([False, True]),
+                "message": "Nezaplatene poistenie"
+            },
+            "checks": {
+                "stk": {
+                    "date": time.time(),
+                    "valid": random.choice([False, True])
+                },
+                "ek": {
+                    "date": time.time(),
+                    "valid": random.choice([False, True])
+                }
+            }
+        }
+    }
+
+
 def generate_egv_object(alpr_res):
-    plate = alpr_res['results'][0]
+    plates = [foo(plate) for plate in alpr_res['results']]
 
     return {
         "processing_time_ms": alpr_res['processing_time_ms'],
-        "data": [
-            {
-                "id": str(uuid.uuid4()),
-                "plate": plate['plate'],
-                "coordinates": plate['coordinates'],
-                "vehicle": {
-                    "id": str(uuid.uuid4()),
-                    "parameters": {
-                        "model": random.choice(MODELS),
-                        "brand": random.choice(BRANDS),
-                        "year": random.choice(YEARS),
-                        "color": random.choice(COLORS)
-                    },
-                    "owner": {
-                        "id": str(uuid.uuid4()),
-                        "pid": "OB123489",
-                        "fullname": "{} {}".format(random.choice(FIRSTNAMES), random.choice(LASTNAMES))
-                    },
-                    "insurance": {
-                        "company": "Prva poistovna",
-                        "date": time.time(),
-                        "valid": random.choice([False, True]),
-                        "message": "Nezaplatene poistenie"
-                    },
-                    "checks": {
-                        "stk": {
-                            "date": time.time(),
-                            "valid": random.choice([False, True])
-                        },
-                        "ek": {
-                            "date": time.time(),
-                            "valid": random.choice([False, True])
-                        }
-                    }
-                }
-            }
-        ]
+        "data": plates
     }
 
 

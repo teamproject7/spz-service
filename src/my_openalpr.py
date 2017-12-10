@@ -35,3 +35,5 @@ def recongnize(img_path):
     result = alpr.recognize_file(img_path)
     # TODO log processing time
     return result
+
+print(recongnize('multiple_plates.jpg'))
