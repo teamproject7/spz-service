@@ -13,7 +13,7 @@ MODELS = ['Model I', 'Model II', 'Model III']
 YEARS = list(range(1900, 2017))
 
 
-def foo(plate):
+def create_egv_object(plate):
     return {
         "id": str(uuid.uuid4()),
         "plate": plate['plate'],
@@ -51,20 +51,10 @@ def foo(plate):
     }
 
 
-def generate_egv_object(alpr_res):
-    plates = [foo(plate) for plate in alpr_res['results']]
+def generate_egv_response(alpr_res):
+    plates = [create_egv_object(plate) for plate in alpr_res['results']]
 
     return {
         "processing_time_ms": alpr_res['processing_time_ms'],
         "data": plates
     }
-
-
-def generate_spzs(count):
-    spzs = {}
-    while len(spzs) <= count:
-        spz = generate_spz()
-        if spz not in spzs:
-            spzs[spz] = generate_egv_object(spz)
-
-    return spzs

@@ -4,7 +4,7 @@ from src.my_filestorage import save_b64_to_file, allowed_file
 from src.my_openalpr import recongnize as recognize_img
 from src.responses import AppResponses
 from src.messages import AppMessages
-from src.model.egv import generate_egv_object
+from src.model.egv import generate_egv_response
 
 parser = reqparse.RequestParser()
 parser.add_argument('image')
@@ -21,7 +21,7 @@ def create_api_response(status_code, message, data={}):
 def create_post_response(data):
     if len(data['results']) > 0:
 
-        egv_data = generate_egv_object(data)
+        egv_data = generate_egv_response(data)
         return create_api_response(
             status_code=AppResponses.LICENCE_PLATE_FOUND,
             message=AppMessages.LICENCE_PLATE_FOUND,
