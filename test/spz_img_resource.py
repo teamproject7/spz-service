@@ -19,7 +19,7 @@ def test_get():
 def test_post_recognize():
     res = do_post(file_should_recognize)
     res_data = res.json()
-    assert res.status_code == 200 and res_data['status_code'] == 'LICENCE_PLATE_FOUND', \
+    assert res.status_code == 200 and res_data['status_code'] == 'SUCCESS', \
         'SPZ_IMG resource POST method is not working properly'
 
 
@@ -27,7 +27,7 @@ def test_post_recognize_multiple():
     res = do_post(file_should_recognize_multiple)
     res_data = res.json()
     found_plates_count = len(res_data['data'])
-    assert res.status_code == 200 and res_data['status_code'] == 'LICENCE_PLATE_FOUND' and found_plates_count >= 2, \
+    assert res.status_code == 200 and res_data['status_code'] == 'SUCCESS' and found_plates_count >= 2, \
         'SPZ_IMG resource POST method is not working properly'
 
 
