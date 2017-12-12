@@ -2,7 +2,6 @@ import base64
 import requests
 
 url = "{}:{}/spz_img/".format('http://127.0.0.1', '8765')
-url = "{}:{}/spz_img/".format('http://127.0.0.1', '80')
 # url = "{}:{}/spz_img/".format('http://108.61.179.124', '7486')
 
 
@@ -28,7 +27,7 @@ def test_post_recognize_multiple():
     res = do_post(file_should_recognize_multiple)
     res_data = res.json()
     found_plates_count = len(res_data['data'])
-    assert res.status_code == 200 and res_data['status_code'] == 'LICENCE_PLATE_FOUND' and found_plates_count > 1, \
+    assert res.status_code == 200 and res_data['status_code'] == 'LICENCE_PLATE_FOUND' and found_plates_count >= 2, \
         'SPZ_IMG resource POST method is not working properly'
 
 
