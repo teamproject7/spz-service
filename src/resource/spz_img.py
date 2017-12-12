@@ -23,7 +23,7 @@ def create_post_response(data):
 
         egv_data = generate_egv_response(data)
         return create_api_response(
-            status_code=AppResponses.LICENCE_PLATE_FOUND,
+            status_code=AppResponses.SUCCESS,
             message=AppMessages.LICENCE_PLATE_FOUND,
             data=egv_data
         )
