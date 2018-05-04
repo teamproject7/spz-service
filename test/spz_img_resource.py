@@ -1,11 +1,11 @@
 import base64
 import requests
 
-url = "{}:{}/spz_img/".format('http://127.0.0.1', '8765')
+url = "{}:{}/api/v1.0/spz_img/".format('http://127.0.0.1', '8765')
 # url = "{}:{}/spz_img/".format('http://108.61.179.124', '7486')
 
 
-file_should_recognize = "us_plate.jpg"
+file_should_recognize = "sk_plate.jpg"
 file_should_recognize_multiple = "multiple_plates.jpg"
 file_no_plate = "opencv.jpg"
 file_not_allowed = "file.txt"
