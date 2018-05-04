@@ -1,6 +1,6 @@
 from flask_restful import reqparse, Resource, abort
 
-from src.my_filestorage import save_b64_to_file, allowed_file
+from src.my_filestorage import save_b64_to_file, allowed_file, allowed_file_size
 from src.my_openalpr import recongnize as recognize_img
 from src.responses import AppResponses
 from src.messages import AppMessages
@@ -54,6 +54,12 @@ class SPZ_IMG(Resource):
             return create_api_response(
                 message=AppMessages.FILE_NOT_ALLOWED,
                 status_code=AppResponses.FILE_NOT_ALLOWED
+            )
+
+        if not allowed_file_size(fpath):
+            return create_api_response(
+                message=AppMessages.IMAGE_FILE_SIZE_TOO_BIG,
+                status_code=AppResponses.IMAGE_FILE_SIZE_TOO_BIG
             )
 
         else:

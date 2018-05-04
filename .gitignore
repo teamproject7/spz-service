@@ -102,6 +102,7 @@ ENV/
 
 # IDE
 .idea/
+.vscode/
 
 data/
 openalpr/

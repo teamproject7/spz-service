@@ -2,10 +2,11 @@ FROM ubuntu:xenial
 
 WORKDIR /app
 COPY . /app
+RUN mkdir data
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git python3-pip python3-dev
 # Install any needed packages specified in requirements.txt
-RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
+RUN pip3 install --upgrade pip==9.0.3 && pip3 install --upgrade setuptools && pip3 install --trusted-host pypi.python.org -r requirements.txt
 
 # -------------- BUILD & INSTALL OPENALPR --------------
 # Install prerequisites
@@ -26,10 +27,6 @@ RUN cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc 
 RUN make
 # Install the binaries/libraries to your local system (prefix is /usr)
 RUN make install
-
-#TODO install postgresql
-#postgresql postgresql-contrib wget vim
-#RUN service postgresql start && su - postgres -c "createdb test; psql -s test" && createdb test && psql -s test <<FOO create user test password 'test'; GRANT ALL PRIVILEGES ON DATABASE test TO test; FOO
 
 
 WORKDIR /app

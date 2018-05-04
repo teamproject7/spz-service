@@ -5,10 +5,11 @@ url = "{}:{}/spz_img/".format('http://127.0.0.1', '8765')
 # url = "{}:{}/spz_img/".format('http://108.61.179.124', '7486')
 
 
-file_not_allowed = "file.txt"
 file_should_recognize = "us_plate.jpg"
 file_should_recognize_multiple = "multiple_plates.jpg"
 file_no_plate = "opencv.jpg"
+file_not_allowed = "file.txt"
+file_too_big = "image_too_big.jpeg"
 
 
 def test_get():
@@ -42,6 +43,13 @@ def test_post_not_allowed():
     res = do_post(file_not_allowed)
     res_data = res.json()
     assert res.status_code == 200 and res_data['status_code'] == 'FILE_NOT_ALLOWED', \
+        'SPZ_IMG resource POST method is not working properly'
+
+
+def test_post_image_size_reached():
+    res = do_post(file_too_big)
+    res_data = res.json()
+    assert res.status_code == 200 and res_data['status_code'] == 'IMAGE_FILE_SIZE_TOO_BIG', \
         'SPZ_IMG resource POST method is not working properly'
 
 

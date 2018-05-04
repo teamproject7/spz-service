@@ -4,7 +4,7 @@ import uuid
 
 import magic
 
-from src.const import ALLOWED_MIME, UPLOAD_FOLDER
+from src.const import ALLOWED_MIME, UPLOAD_FOLDER, MAX_IMAGE_FILE_SIZE
 
 
 def allowed_file(filename):
@@ -13,6 +13,13 @@ def allowed_file(filename):
         return True
 
     return False
+
+
+def allowed_file_size(path):
+    si = os.stat(path)
+    b = si.st_size
+
+    return b <= MAX_IMAGE_FILE_SIZE
 
 
 def save_b64_to_file(b64_str):
