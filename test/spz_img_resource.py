@@ -2,7 +2,7 @@ import base64
 import requests
 
 url = "{}:{}/api/v1.0/spz_img/".format('http://127.0.0.1', '8765')
-# url = "{}:{}/spz_img/".format('http://108.61.179.124', '7486')
+# url = "{}:{}/api/v1.0/spz_img/".format('http://108.61.179.124', '7486')
 
 
 file_should_recognize = "sk_plate.jpg"
@@ -20,6 +20,7 @@ def test_get():
 def test_post_recognize():
     res = do_post(file_should_recognize)
     res_data = res.json()
+    print(res_data)
     assert res.status_code == 200 and res_data['status_code'] == 'SUCCESS', \
         'SPZ_IMG resource POST method is not working properly'
 

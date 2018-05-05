@@ -36,3 +36,5 @@ sudo make install
 
 
 cd openalpr/src/bindings/python && python3 setup.py install
+
+mkdir data
