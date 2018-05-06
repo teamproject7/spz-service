@@ -17,7 +17,7 @@ else:
     print('OpenALPR initialized ...')
 
 alpr.set_top_n(3)
-alpr.set_default_region("sk")
+alpr.set_default_region("eu")
 
 
 def recongnize(img_path):

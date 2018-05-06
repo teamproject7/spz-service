@@ -1,8 +1,8 @@
 import base64
 import requests
 
-url = "{}:{}/api/v1.0/spz_img/".format('http://127.0.0.1', '8765')
-# url = "{}:{}/api/v1.0/spz_img/".format('http://108.61.179.124', '7486')
+# url = "{}:{}/api/v1.0/spz_img/".format('http://127.0.0.1', '8765')
+url = "{}:{}/api/v1.0/spz_img/".format('http://108.61.179.124', '7486')
 
 
 file_should_recognize = "sk_plate.jpg"
@@ -46,7 +46,7 @@ def test_post_not_allowed():
     assert res.status_code == 200 and res_data['status_code'] == 'FILE_NOT_ALLOWED', \
         'SPZ_IMG resource POST method is not working properly'
 
-
+# TODO fix
 def test_post_image_size_reached():
     res = do_post(file_too_big)
     res_data = res.json()

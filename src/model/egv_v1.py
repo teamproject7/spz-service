@@ -8,7 +8,11 @@ def create_egv_object(plate):
 
     # no info found
     if not info:
-        return {}
+        return {
+            "id": str(uuid.uuid4()),
+            "plate": plate['plate'],
+            "coordinates": plate['coordinates']
+        }
 
     # :D:D:D
     def get_info(key):
@@ -16,8 +20,6 @@ def create_egv_object(plate):
             return ''
 
         return info[key]
-
-    # return {}
 
     return {
         "id": str(uuid.uuid4()),

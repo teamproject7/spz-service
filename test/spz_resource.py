@@ -1,7 +1,8 @@
 import requests
 
 # TODO duplicate
-url = "{}:{}/spz/".format('http://127.0.0.1', '8765')
+# url = "{}:{}/spz/".format('http://127.0.0.1', '8765')
+url = "{}:{}/api/v1.0/spz/".format('http://127.0.0.1', '8765')
 # url = "{}:{}/spz_img/".format('http://108.61.179.124', '7486')
 
 
@@ -16,7 +17,7 @@ def test_get():
 def test_post():
     res = do_post(plate_exmpl)
     res_data = res.json()
-    assert res.status_code == 200 and res_data['status_code'] == 'SUCCESS' \
+    assert res.status_code == 200 and res_data['status_code'] in ['SUCCESS', 'NO_EGV_INFO_FOUND'] \
            and 'plate' in res_data['data'], \
         'SPZ_IMG resource POST method is not working properly'
 
